@@ -104,4 +104,7 @@ elif (type == "keyboard"):
         print("error with:", e)
 elif (type == "url"):
     url = config[gesture]["action"]
-    webbrowser.open(url, new=0, autoraise=True)
+    try:
+        webbrowser.open(url, new=0, autoraise=True)
+    except Exception as e:
+        print("error: invalid url")
