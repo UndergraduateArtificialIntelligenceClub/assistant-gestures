@@ -1,8 +1,8 @@
 {
   "gestures": {
     "2_fingers": {
-      "type": "script",
-      "action": "python --version; pip --version"
+      "type": "python",
+      "action": "/home/giancarlo/Documents/University/Computer Science/CMPUT 175/Class Python/simple_enciphering.py"
     },
     "3_fingers": {
       "type": "script",
