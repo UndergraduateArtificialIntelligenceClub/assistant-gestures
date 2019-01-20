@@ -1,8 +1,8 @@
 {
   "gestures": {
     "2_fingers": {
-      "type": "url",
-      "action": "https://example.com/"
+      "type": "keyboard",
+      "action": "ctrl+v"
     },
     "3_fingers": {
       "type": "script",

@@ -89,16 +89,19 @@ if (type == "script"):
 elif (type == "python"):
     python_path = config[gesture]["action"]
     os.system("python " + "'" + python_path + "'")
-elif (type == "media"):
+elif (type == "keyboard"):
     keyboard_stroke = config[gesture]["action"].split('+')
     print(keyboard_stroke)
     keyboard = Controller()
     keyboard_stroke = [convertKey(k) for k in keyboard_stroke]
-    time.sleep(5)
-    for k in keyboard_stroke:
-        keyboard.press(k)
-    for k in reversed(keyboard_stroke):
-        keyboard.release(k)
+    time.sleep(1)
+    try:
+        for k in keyboard_stroke:
+            keyboard.press(k)
+        for k in reversed(keyboard_stroke):
+            keyboard.release(k)
+    except Exception as e:
+        print("error with:", e)
 elif (type == "url"):
     url = config[gesture]["action"]
     webbrowser.open(url, new=0, autoraise=True)
