@@ -1,0 +1,12 @@
+{
+  "gestures": {
+    "2_fingers": {
+      "type": "script",
+      "action": "python --version; pip --version"
+    },
+    "3_fingers": {
+      "type": "script",
+      "action": "neofetch"
+    }
+  }
+}
