@@ -1,14 +1,15 @@
 import sys
 import json
-from PyQt4 import QtGui, QtCore
-from PyQt4.Qt import *
+import PyQt5
+from PyQt5 import QtGui, QtCore, QtWidgets
+from PyQt5.Qt import *
 
 
 # API KEY : 6-pyGRDak39QWhJWSGOPQHEmUNscoyne
 # SECRET KEY : b3RftF6kSJfkqcpi_3K5ZRz148kNTr2p
 
 
-class Window(QtGui.QMainWindow):
+class Window(QtWidgets.QMainWindow):
 
     def __init__(self):
 
@@ -21,7 +22,7 @@ class Window(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon("logo.png"))
         # QtGui.QApplication.setStyle(QtGui.QStyleFactory.create("Cleanlooks"))
 
-        quitAction = QtGui.QAction("&Quit", self)
+        quitAction = QtWidgets.QAction("&Quit", self)
         quitAction.setShortcut("Ctrl+Q")
         quitAction.setStatusTip("Exit the application")
         quitAction.triggered.connect(self.close_application)
@@ -43,38 +44,38 @@ class Window(QtGui.QMainWindow):
 
         #----- Enter api key -----#
 
-        self.apiKeyText = QtGui.QLabel(self)
+        self.apiKeyText = QtWidgets.QLabel(self)
         self.apiKeyText.setText("Enter your FacePlusPlus public key")
         self.apiKeyText.setGeometry(205, 30, 290, 26)
         self.apiKeyText.setAlignment(Qt.AlignCenter)
         self.apiKeyText.setFont(QtGui.QFont("SansSerif", 10))
 
-        self.apiKeyLineEdit = QtGui.QLineEdit(self)
+        self.apiKeyLineEdit = QtWidgets.QLineEdit(self)
         self.apiKeyLineEdit.move(400, 250)
         self.apiKeyLineEdit.setMaxLength(32)
         self.apiKeyLineEdit.setGeometry(205, 56, 290, 26)
         self.apiKeyLineEdit.setFont(QtGui.QFont("SansSerif", 10))
         
-        self.apiKeyButton = QtGui.QPushButton("Ok", self)
+        self.apiKeyButton = QtWidgets.QPushButton("Ok", self)
         self.apiKeyButton.setGeometry(500, 55, 70, 28)
 
         self.apiKeyButton.clicked.connect(self.apiKeyButtonClicked)
 
         #----- Enter secret key -----#
 
-        self.secretKeyText = QtGui.QLabel(self)
+        self.secretKeyText = QtWidgets.QLabel(self)
         self.secretKeyText.setText("Enter your FacePlusPlus private key")
         self.secretKeyText.setGeometry(205, 80, 290, 26)
         self.secretKeyText.setAlignment(Qt.AlignCenter)
         self.secretKeyText.setFont(QtGui.QFont("SansSerif", 10))
 
-        self.secretKeyLineEdit = QtGui.QLineEdit(self)
+        self.secretKeyLineEdit = QtWidgets.QLineEdit(self)
         self.secretKeyLineEdit.move(400, 250)
         self.secretKeyLineEdit.setMaxLength(32)
         self.secretKeyLineEdit.setGeometry(205, 106, 290, 26)
         self.secretKeyLineEdit.setFont(QtGui.QFont("SansSerif", 10))
  
-        self.secretKeyButton = QtGui.QPushButton("Ok", self)
+        self.secretKeyButton = QtWidgets.QPushButton("Ok", self)
         self.secretKeyButton.setGeometry(500, 105, 70, 28)
  
         self.secretKeyButton.clicked.connect(self.secretKeyButtonClicked)
@@ -99,19 +100,19 @@ class Window(QtGui.QMainWindow):
         combo_boxes = []
 
         for i in range(1, 6):
-            image = QtGui.QLabel(self)
+            image = QtWidgets.QLabel(self)
             image.setPixmap(QPixmap("{}.png".format(i)).scaled(50, 50))
             image.setGeometry(20, 120 + 80*i, 50, 50)
             images.append(image)
 
-            text = QtGui.QLabel(self)
+            text = QtWidgets.QLabel(self)
             text.setText("{} Fingers".format(i))
             text.setGeometry(75, 130 + 80*i, 100, 26)
             text.setAlignment(Qt.AlignLeft)
             text.setFont(QtGui.QFont("SansSerif", 10))
             text_fields.append(text)
 
-            comboBox = QtGui.QComboBox(self)
+            comboBox = QtWidgets.QComboBox(self)
             comboBox.addItem("Run Python script")
             comboBox.addItem("Execute terminal command")
             comboBox.addItem("Press key")
@@ -141,7 +142,7 @@ class Window(QtGui.QMainWindow):
 
     
 def main():
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     GUI = Window()
     sys.exit(app.exec_())
 
