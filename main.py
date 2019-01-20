@@ -2,6 +2,7 @@ import json
 import os
 import time
 from pynput.keyboard import Key, Controller
+import webbrowser
 
 config = None
 
@@ -88,7 +89,7 @@ if (type == "script"):
 elif (type == "python"):
     python_path = config[gesture]["action"]
     os.system("python " + "'" + python_path + "'")
-elif (type == 'media'):
+elif (type == "media"):
     keyboard_stroke = config[gesture]["action"].split('+')
     print(keyboard_stroke)
     keyboard = Controller()
@@ -98,3 +99,6 @@ elif (type == 'media'):
         keyboard.press(k)
     for k in reversed(keyboard_stroke):
         keyboard.release(k)
+elif (type == "url"):
+    url = config[gesture]["action"]
+    webbrowser.open(url, new=0, autoraise=True)
